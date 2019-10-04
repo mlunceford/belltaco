@@ -2,6 +2,12 @@ import React from 'react';
 import './reset.css'
 import './App.css';
 import axios from 'axios'
+import Header from './componenets/Header'
+import TacoCart from './componenets/TacoCart'
+import Nutrition from './componenets/Nutrition'
+import SecretMenu from './componenets/SecretMenu'
+
+
 
 class App extends React.Component {
     constructor(){
@@ -18,7 +24,7 @@ class App extends React.Component {
     render(){
         return (
           <div className="App">hey man
-            
+            <Header/>
           </div>
         );
 
