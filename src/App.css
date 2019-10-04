@@ -1,6 +1,94 @@
+
 body{
-    background: pink;
+    font-family: InterstateRegular,Arial,Tahoma,sans-serif;
+    background:;
 }
-.App{
-    background: greenyellow;
+.header{
+    background: #68298C;
+    height: 125px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+
+}
+.logo-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%
+}
+.logo {
+    height: 100px;
+    padding-left: 10px;
+}
+.title {
+    font-size: 70px;
+    padding-right: 10px;
+}
+.btn:hover{
+    cursor: pointer;
+
+}
+.tacoCart{
+    font-size: 40px;
+
+}
+.secretButton {
+    font-size: 50px;
+    color: #68298C;
+    transform: 2s;
+}
+@media {
+    .secretButton:hover {
+
+        color: white;
+
+    }
+}
+.display-box{
+    background-image: url('https://resize.hswstatic.com/w_907/gif/taco-trivia-1.jpg');
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    
+    overflow: hidden;
+    column-count: 2;
+}
+.filter-box{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(139, 130, 130);
+    font-size: 40px;
+    font-weight: bold;
+    color: #68298C;
+    background-size: cover;
+    /* background-position: center; */
+}
+input{
+    height:;
+    font-size: 25px;
+    color: #68298C;
+}
+.Nutrition{
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    background: transparent;
+    
+}
+.Nutrition:hover{
+    /* background: black; */
+    color: white;
+}
+.add{
+    border: none;
+    background: pink;
+    border-radius: 3px;
+    display: flex;
+    align-items: center
 }
