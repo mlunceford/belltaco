@@ -32,7 +32,7 @@ class App extends React.Component {
             this.setState({ data: res.data })
         })
     }
-    edit = (index, body) => {
+    save = (index, body) => {
         axios.put(`/api/data/${index}`, body).then(res => {
             this.setState({ data: res.data })
         })
@@ -47,6 +47,10 @@ class App extends React.Component {
             filterString: val
         })
     };
+    handleInput = e => {
+        const {name,value} = e.target;
+        this.setState({})
+    }
     handleChange = (filter) => {
         this.setState({ filterString: filter });
     }
@@ -93,8 +97,9 @@ class App extends React.Component {
                 data={data}
                 currentItem={this.state.currentItem}
                 getNutrition={this.getNutrition}
-                edit={this.edit}
+                saveFn={this.save}
                 delete={this.delete}
+
                 />
             </div>
         );

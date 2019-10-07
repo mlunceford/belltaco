@@ -21,23 +21,28 @@ class TacoCart extends React.Component {
         // const menuItem = menuItemList
         // console.log(menuItemList)
         
-        const menuItem = menuItems.pop()
+        // const menuItem = menuItems.pop()
+        const menuItem = menuItems
         const menuItemList = []
-        menuItemList.push(menuItem)
-
+        menuItemList.push(menuItems[menuItems.length -1])
+        console.log(menuItemList) 
         return (
             <div className="TacoCart">
                 <div className="total">
-                    {/* Total Calories:{menuItem.calories} */}
+                    Total Calories:{menuItemList    .calories}
                     {/* {ruduce function for total cals} */}
                 </div>
                 <div className="menuItemStats">
                     {menuItemList.map((element, index) =>{
                         return <DisplayItem
                             key={`${element}, ${index}`}
-                            name={element}
+                            nameElement={element}
+                            saveFn={this.props.saveFn}
                             />
-                        })}                
+                        })}
+                        <div className="menuItemsStats2">
+                            
+                        </div>                
                 </div>
 
             </div>

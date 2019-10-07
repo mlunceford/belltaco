@@ -3,19 +3,33 @@ import React from 'react'
 class DisplayItem extends React.Component{
     constructor(props){
         super(props)
-
+        this.state = {
+            toggleRename: false,
+            renameInput: ''
+        }
     }
+    // toggle =() => {
+    //     this.setState(prevState => ({toggleRename: !prevState.toggleRename}))
+    // }
+    // handleChange= () => {
+    //     this.setState({renameInput: e.target.value})
+    // }
+    // save = () => {
+    //     this.props.saveFn(this.props)
+    // }
     render(){
-        const {menuItemList} = this.props
+        const {nameElement} = this.props
+        
         return(
             <div className="DisplayItem">
-                <ul>Name:{menuItemList[0].name} <button>edit</button> </ul>
-                {/* <ul>Cost:{menuItemlist[0].cost}</ul>
-                <ul>Calories:{menuItemList[0].calories}</ul>
-                <ul>Total Fat:{menuItemList[0].totalFat}</ul>
-                <ul>Carbs:{menuItemList[0].Carbohydrates}</ul>
-                <ul>Sugars:{menuItemList[0].sugars}</ul>
-                <ul>Protein{menuItemList[0].protein}</ul> */}
+                <ul>Name:{nameElement.name} 
+                    <button >dit</button> </ul>
+                <ul>Cost:{nameElement.cost}</ul>
+                <ul>Calories:{nameElement.calories}</ul>
+                <ul>Total Fat:{nameElement.totalFat}</ul>
+                <ul>Carbs:{nameElement.Carbohydrates}</ul>
+                <ul>Sugars:{nameElement.sugars}</ul>
+                <ul>Protein{nameElement.protein}</ul>
             </div>
     
         )
