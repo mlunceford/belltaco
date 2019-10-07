@@ -4,9 +4,10 @@ import './App.css';
 import axios from 'axios'
 import Header from './componenets/Header'
 import TacoCart from './componenets/TacoCart'
-import Nutrition from './componenets/Nutrition'
+import MenuItem from './componenets/MenuItem'
 import SecretMenu from './componenets/SecretMenu'
 import router from './router'
+import { HashRouter } from 'react-router-dom'
 
 
 
@@ -16,16 +17,17 @@ class App extends React.Component {
         this.state = {
             data: [{}],
             filterString: '',
+            currentItem: '',
             // index: 0
         }
     }
     componentDidMount = () => {
         axios.get('/api/data').then(res => {
-            console.log(res)
+            // console.log(res)
             this.setState({ data: res.data })
         })
     }
-    post = (body) => {
+    getNutrition = (body) => {
         axios.post('/api/data', body).then(res => {
             this.setState({ data: res.data })
         })
@@ -45,49 +47,57 @@ class App extends React.Component {
             filterString: val
         })
     };
-    handleChange=(filter)=> {
+    handleChange = (filter) => {
         this.setState({ filterString: filter });
-      }
-   
+    }
+    setCurrentItem = (itemName) => {
+        this.setState({
+            currentItem: itemName
+        })
+    }
     render() {
         // console.log(this.state.data)
-        const {data, filterString} = this.state
-        let foodsToDisplay = ''
-        if(data[1]){
+        const { data, filterString } = this.state
+        let foodsToDisplay = '' //you could default this to null to not do the terinary.
+        if (data[1]) {
             foodsToDisplay = data
-            .filter((element, index) => {
-                return element.name.toLowerCase().includes(this.state.filterString);
-            })
-            .map((element, index) => {
-                return <Nutrition 
-                    key={`${element.name}, ${index}`}
-                    data={element}/>
-            });
+                .filter((element, index) => {
+                    return element.name.toLowerCase().includes(this.state.filterString);
+                })
+                .map((element, index) => {
+                    return <MenuItem
+                        key={`${element.name}, ${index}`}
+                        data={element} 
+                        getNutrition={this.getNutrition}
+                        setCurrentItem={this.setCurrentItem}
+                        />
+                });
 
-        } 
-        
+        }
+
         return (
-            // <HashRouter>
-                <div className="App">
-                    <Header />
-                    {/* <Router></Router> */}
-                    <div className="filter-box">
-                        <label>Search:</label>
-                        <input 
+            <div className="App">
+                <Header />
+                <div className="filter-box">
+                    <label>Search:</label>
+                    <input
                         type="text"
                         placeholder='Find Taco Bell Item'
                         onChange={e => this.handleChange(e.target.value)}
-                        />
-                    </div>
-                    <div className="display-box">
-                        {foodsToDisplay ? foodsToDisplay : null }
-                        
-                    </div>
+                    />
                 </div>
-
-            // </HashRouter>
+                <div className="display-box">
+                    {foodsToDisplay ? foodsToDisplay : null}
+                </div>
+                <TacoCart
+                data={data}
+                currentItem={this.state.currentItem}
+                getNutrition={this.getNutrition}
+                edit={this.edit}
+                delete={this.delete}
+                />
+            </div>
         );
-
     }
 }
 

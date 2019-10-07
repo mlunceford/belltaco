@@ -31,6 +31,7 @@ module.exports = {
         const { index, name1, cost1, calories1, carbohydrates1, sugars1, protein1 } = req.body;
         data[index].name = name1;
         data[index].cost = cost1;
+        data[index].totalFat = totalFat1;
         data[index].calories = calories1;
         data[index].carbohydrates = carbohydrates1;
         data[index].sugars = sugars1;
