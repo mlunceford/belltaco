@@ -22,14 +22,25 @@ class DisplayItem extends React.Component{
         
         return(
             <div className="DisplayItem">
-                <ul>Name:{nameElement.name} 
-                    <button >dit</button> </ul>
-                <ul>Cost:{nameElement.cost}</ul>
-                <ul>Calories:{nameElement.calories}</ul>
-                <ul>Total Fat:{nameElement.totalFat}</ul>
-                <ul>Carbs:{nameElement.Carbohydrates}</ul>
-                <ul>Sugars:{nameElement.sugars}</ul>
-                <ul>Protein{nameElement.protein}</ul>
+                <div className="total">
+                    Total Calories:{nameElement.calories}
+                    {/* {ruduce function for total cals} */}
+                </div> 
+                <div className="menuListData">
+                    <div className="menuBox">
+                        <ul>Name:{nameElement.name}</ul>
+                            
+                        <ul>Cost:{nameElement.cost}</ul>
+                        <ul>Calories:{nameElement.calories}</ul>
+                        <ul>Total Fat:{nameElement.totalFat}</ul>
+                        <ul>Carbs:{nameElement.Carbohydrates}</ul>
+                        <ul>Sugars:{nameElement.sugars}</ul>
+                        <ul>Protein{nameElement.protein}</ul>
+                    </div>
+                    <button className='btn btnH' >Edit</button><button className='btn btnH' onClick={()=> this.props.delete(this.props.myItemList[0].name)}>Delete</button>
+
+
+                </div>
             </div>
     
         )
